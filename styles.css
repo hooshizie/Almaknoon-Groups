@@ -1,0 +1,729 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border-bottom: 3px solid #d4af37;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 90px;
+}
+
+/* Left Side: Al Maknoon Group Text */
+.brand-name {
+    font-size: 50px;
+    font-weight: bold;
+    color: #f8c006;
+    white-space: nowrap;
+    margin-left: 20px; /* Adds spacing from the edge */
+}
+
+/* Center the Logo */
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.logo img {
+    height: 120px; /* Adjust logo size */
+    display: block;
+}
+
+/* Right Side: Navigation Menu */
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    color: #d4af37;
+}
+
+
+/* Home Section (Video & Welcome Message) */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Video Fullscreen Background */
+.hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Hero Content */
+.hero-title-container {
+    width: 100%;
+    background: rgba(128, 128, 128, 0); /* Transparent */
+    padding: 20px 0;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    text-align: center;
+    animation: fadeInSlideUp 1.5s ease-in-out;
+}
+
+.hero-title {
+    font-size: 48px;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    margin: 0;
+    padding: 10px;
+}
+
+/* Slogan Style */
+.hero-slogan {
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-top: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 0.5s forwards;
+}
+
+/* Welcome Message Section */
+.welcome-text {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 20px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.welcome-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.welcome-text-content {
+    flex: 1;
+    text-align: left;
+}
+
+.welcome-image {
+    flex: 1;
+    text-align: right;
+}
+
+.welcome-image img {
+    width: 150%;        /* Makes the image responsive */
+    max-width: 650px;   /* Sets the maximum width of the image */
+    border-radius: 10px; /* Adds rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+}
+
+/* Ensure welcome text & image are hidden when switching sections */
+.hero.hidden,
+.welcome-text.hidden {
+    display: none;
+}
+
+/* Sections */
+.section {
+    display: none;
+    text-align: center;
+    padding: 80px;
+    background: white;
+    color: #333;
+}
+
+/* About Us Section */
+.about-title {
+    text-align: center;
+    color: #d4af37;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* List for Services */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.about-list li {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.about-list li::before {
+    content: "✅";
+    margin-right: 10px;
+    font-size: 18px;
+    color: #27ae60; /* Green checkmark */
+}
+
+/* Image Styling */
+.about-image {
+    flex: 1;
+    text-align: right;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-image {
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+}
+
+
+/* Text Content Box */
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* About Us Text */
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* List for Services */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.about-list li {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.about-list li::before {
+    content: "✅";
+    margin-right: 10px;
+    font-size: 18px;
+    color: #27ae60; /* Green checkmark */
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .about-image-box {
+        max-width: 90%;
+    }
+
+    .about-container {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+}
+
+
+
+/* Make active section visible */
+.section.active {
+    display: block;
+}
+
+/* Section Titles */
+.section h2 {
+    color: #d4af37;
+    font-size: 32px;
+    font-weight: 700;
+    padding-top: 20px;
+}
+
+/* Companies Section */
+.companies-title {
+    text-align: center;
+    color: #d4af37;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding-top: 120px; /* Ensures title is not hidden under the fixed header */
+}
+
+/* Grid Layout for Companies */
+.company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Company Cards */
+.company-card {
+    display: flex;
+    flex-direction: column; /* Ensures content stacks neatly */
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    min-height: 450px; /* Ensures enough space for text */
+}
+
+.company-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Company Images */
+.company-card img {
+    width: 100%;
+    height: auto; /* Allows the image to scale properly */
+    max-height: 250px; /* Ensures image does not take too much space */
+    object-fit: contain; /* Keeps the full image visible */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Company Titles */
+.company-card h3 {
+    font-size: 20px;
+    color: #a78a2e;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Company Descriptions */
+.company-card p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Explore Button */
+.explore-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+    background: #b5962c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .company-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+
+}
+/* Services Section */
+.services-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1300px;
+    margin: auto;
+    padding: 60px 20px;
+    position: relative;
+}
+
+/* Services List (Now on the Left) */
+.services-list {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Individual Service Box */
+.service-item {
+    background: white;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Service Text */
+.service-content {
+    text-align: left;
+}
+
+.service-content h3 {
+    font-size: 22px;
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.service-content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Learn More Button */
+.explore-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+    background: #b5962c;
+}
+
+/* Right Side Long Image */
+.services-image {
+    flex: 1;
+    max-width: 400px;
+    position: sticky;
+    top: 100px; /* Stays in place when scrolling */
+}
+
+.services-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-image {
+        max-width: 100%;
+        position: relative;
+    }
+
+    .service-item {
+        text-align: center;
+    }
+}
+/* Contact Section */
+#contact {
+    background: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Title & Subtitle */
+.contact-title {
+    font-size: 36px;
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Contact Layout */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Contact Form */
+.contact-form {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Form Labels */
+.contact-form label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Textarea Field */
+.contact-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Input Focus Effect */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #b5962c;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Send Button */
+.contact-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background: #d4af37;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #b5962c;
+}
+
+/* Contact Info */
+.contact-info {
+    flex: 1;
+    text-align: left;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Contact Links */
+.contact-info a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Map Container */
+.map-container {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map {
+    width: 100%;
+    height: 250px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-form,
+    .contact-info {
+        text-align: center;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-form,
+    .contact-info {
+        text-align: center;
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border-top: 3px solid #d4af37;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade-in Slide Animation */
+@keyframes fadeInSlideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
