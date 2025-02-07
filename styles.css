@@ -12,11 +12,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0px;
+    padding: 10px 0px;
     background: rgba(255, 255, 255, 0.95);
     color: #333;
     border-bottom: 3px solid #d4af37;
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -55,13 +55,13 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Increase spacing between items */
     margin: 0;
-    padding: 0;
+    padding: 0 30px; /* Add padding on the left and right */
 }
 
 nav ul li a {
-    color: #333;
+    color: #b56d15;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
@@ -70,7 +70,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #d4af37;
+    color: #ffc609;
 }
 
 
@@ -179,12 +179,32 @@ nav ul li a:hover {
 }
 
 /* Sections */
+/* Sections */
 .section {
-    display: none;
-    text-align: center;
-    padding: 80px;
-    background: white;
-    color: #333;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 100%; /* Initially off-screen */
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.section.active {
+    position: relative; /* Allows scrolling */
+    left: 0;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide In From Right */
+.section.enter-right {
+    transform: translateX(100%);
+}
+
+/* Slide In From Left */
+.section.enter-left {
+    transform: translateX(-100%);
 }
 
 /* About Us Section */
@@ -198,16 +218,15 @@ nav ul li a:hover {
 }
 
 .about-container {
+    display: flex;
+    align-items: flex-start; /* Ensures both text and image start at the top */
+    gap: 40px;
     max-width: 1100px;
     margin: auto;
     background: white;
     padding: 40px 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
 }
 
 .about-text {
@@ -247,14 +266,18 @@ nav ul li a:hover {
 /* Image Styling */
 .about-image {
     flex: 1;
-    text-align: right;
+    max-width: 400px;
+    position: sticky;
+    top: 200px; /* Adjust as needed */
+    align-self: flex-start; /* Ensures it aligns to the top */
 }
 
 .about-image img {
-    width: 100%;
-    max-width: 450px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 200%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Controls max size */
+    object-fit: cover; /* Keeps proportions */
 }
 
 /* Responsive Design */
@@ -264,16 +287,13 @@ nav ul li a:hover {
         text-align: center;
     }
 
-    .about-text {
-        text-align: center;
-    }
-
     .about-image {
+        position: relative; /* Removes sticky effect */
         text-align: center;
     }
 
     .about-image img {
-        max-width: 100%;
+        max-width: 90%;
     }
 }
 
@@ -441,6 +461,33 @@ nav ul li a:hover {
     }
 
 }
+/* Services Section Header */
+.services-header {
+    text-align: center;
+    margin-bottom: 30px; /* Space before services list */
+}
+
+.services-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #d4af37; /* Gold color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.services-subtitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: #8b5e34; /* Stylish brownish color */
+    margin-top: 10px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
 /* Services Section */
 .services-container {
     display: flex;
