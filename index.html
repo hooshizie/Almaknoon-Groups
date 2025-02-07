@@ -23,18 +23,18 @@
         <!-- Right Side: Navigation Menu -->
         <nav>
             <ul>
-                <li><a href="#" onclick="showSection('home')">Home</a></li>
-                <li><a href="#" onclick="showSection('about')">About</a></li>
-                <li><a href="#" onclick="showSection('companies')">Our Companies</a></li>
-                <li><a href="#" onclick="showSection('services')">Services</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" data-section="home">Home</a></li>
+                <li><a href="#" data-section="about">About</a></li>
+                <li><a href="#" data-section="companies">Our Companies</a></li>
+                <li><a href="#" data-section="services">Services</a></li>
+                <li><a href="#" data-section="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     
     
     
-    <section class="hero" id="home">
+     <section class="hero section active" id="home">
         <video autoplay muted loop>
             <source src="media/Dubai.mp4" type="video/mp4">
         </video>
@@ -250,10 +250,10 @@
             <div class="contact-form">
                 <h3>✉️ Get in Touch</h3>
                 <form>
-                    <label for="first-name">Your Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your full name" required>
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name" required>
     
-                    <label for="last-name">Last Name</label>
+                    <label for="last-name">Sure Name</label>
                     <input type="text" id="last-name" placeholder="Enter your last name" required>
     
                     <label for="phone">Phone Number</label>
@@ -298,17 +298,34 @@
     </footer>
 </body>
 
-<script defer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".section");
+    let currentSection = document.querySelector(".section.active");
+
     function showSection(sectionId) {
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
+        const nextSection = document.getElementById(sectionId);
+        if (nextSection === currentSection) return;
 
-        // Show the selected section
-        document.getElementById(sectionId).classList.add('active');
+        const currentIndex = parseInt(currentSection.dataset.index);
+        const nextIndex = parseInt(nextSection.dataset.index);
 
-        // Hide hero and welcome text if not in home
+        if (nextIndex > currentIndex) {
+            currentSection.classList.add("enter-left");
+            nextSection.classList.add("enter-right");
+        } else {
+            currentSection.classList.add("enter-right");
+            nextSection.classList.add("enter-left");
+        }
+
+        setTimeout(() => {
+            currentSection.classList.remove("active", "enter-left", "enter-right");
+            nextSection.classList.remove("enter-left", "enter-right");
+            nextSection.classList.add("active");
+            currentSection = nextSection;
+        }, 500); // Match transition duration
+
         if (sectionId === "home") {
             document.querySelector(".hero").classList.remove("hidden");
             document.querySelector(".welcome-text").classList.remove("hidden");
@@ -317,6 +334,20 @@
             document.querySelector(".welcome-text").classList.add("hidden");
         }
     }
+
+    sections.forEach((section, index) => {
+        section.dataset.index = index;
+    });
+
+    document.querySelectorAll("nav ul li a").forEach(navLink => {
+        navLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            let sectionId = this.getAttribute("data-section");
+            showSection(sectionId);
+        });
+    });
+});
+
 </script>
 
 
